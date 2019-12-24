@@ -52,7 +52,7 @@ uint64_t dirreq_id;/** Unique ID for directory requests; this used to be in conn
 ```
 ### 1.1.4 /src/core/or/entry_connection_st.h
 entry connection 分为 SOCKS connection、 DNS request、 TransPort connection 、 NATD connection
-```
+```c
 struct edge_connection_t edge_;
 
   /** Nickname of planned exit node -- used with .exit support. */
@@ -116,7 +116,7 @@ unsigned int may_use_optimistic_data : 1;
 ## 1.2 circuit 相关
 ### 1.2.1src\core\or\circuit_st.h
 circuit是洋葱路由网络上的路径。Applications可以连接到circuit的一端，并可以在circuit的另一端创建exit connections。 AP和exit connections只有一个与之关联的circuit（因此，当circuit关闭时，这些连接类型也会关闭），而OR connections可一次多路复用多个circuit，即使没有circuit在OR connections上面运行，它们也不会关闭。circuit_t 有两个子类：`origin_circuit_t`和`or_circuit_t`
-```
+```c
   /** The channel that is next in this circuit. */
 channel_t *n_chan;
 
@@ -242,7 +242,7 @@ channel_t *n_chan;
 ```
 ### 1.2.2 \src\core\or\origin_circuit_st.h
 用于circuit的build（/src/core/or/circuitbuild.c）与use（/src/core/or/circuituse.c）。保留cipher keys和状态，以便沿着给定的circuit发送数据。在OP处，它具有一系列密码，每个密码与circuit上的单个OR共享。单独的密码用于“向前”（远离OP）和“向后”（朝OP）数据。在OR处，circuit只有两个stream cipher：一个用于数据前进，而另一个用于数据后退。
-```
+```c
 circuit_t base_;
 
   /** Linked list of AP streams (or EXIT streams if hidden service)
@@ -424,7 +424,7 @@ smartlist_t *half_streams;
 
 ### 1.2.3 /src/core/or/cpath_build_state_st.h
 Information used to build a circuit.
-```
+```c
   /** Intended length of the final circuit. */
 int desired_path_len;
   /** How to extend to the planned exit node. */
