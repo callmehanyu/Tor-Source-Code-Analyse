@@ -21,7 +21,7 @@ The module implements the abstract type,`connection_t`在`connection_st.h`中定
 
 ### 1.1.2 /src/core/or/connection_st.h
 connection分为OR connection，exit connection和**AP connection**三种类型，每一个connection都有时刻变化的状态和输入输出缓冲区。我们主要关注部分如下属性：
-```
+```c
 uint8_t state; /**< Current state of this connection. */
 unsigned int type:5; /**< What kind of connection is this? */
 unsigned int purpose:5; /**< Only used for DIR and EXIT types currently. */
@@ -35,7 +35,7 @@ uint64_t global_identifier;/** Unique identifier for this connection on this Tor
 ```
 ### 1.1.3 /src/core/or/edge_connection_st.h
 edge connection 分为entry (ap，stream) connection 和 exit connection.
-```
+```c
 connection_t base_;
 struct edge_connection_t *next_stream; /**< Points to the next stream at this edge, if any */
 int package_window; /**< How many more relay cells can I send into the circuit? */
