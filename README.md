@@ -245,12 +245,10 @@ channel_t *n_chan;
 ```c
 circuit_t base_;
 
-  /** Linked list of AP streams (or EXIT streams if hidden service)
-   * associated with this circuit. */
+  /** Linked list of AP streams (or EXIT streams if hidden service) associated with this circuit. */
 edge_connection_t *p_streams;
 
-  /** Smartlist of half-closed streams (half_edge_t*) that still
-   * have pending activity */
+  /** Smartlist of half-closed streams (half_edge_t*) that still have pending activity */
 smartlist_t *half_streams;
 
   /** Build state for this circuit. It includes the intended path
@@ -478,4 +476,5 @@ circ_purpose指定我们必须具有哪种circuit，它可以是C_GENERAL，C_IN
 去除那些不适合附加到stream的circuits，以便于circuit_is_better在剩下的circuits集合中选择一个最优的circuit。
 ![](https://i.imgur.com/RMPfBny.jpg)
 ## 2.6 circuit_is_better(const origin_circuit_t *oa, const origin_circuit_t *ob,const entry_connection_t *conn)
-暂且放一放
+对circuit oa和ob进行比较
+![](https://i.imgur.com/qRRw5ZB.jpg)
